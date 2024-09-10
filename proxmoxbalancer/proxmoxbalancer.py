@@ -375,7 +375,7 @@ class ProxmoxBalancer:
     # Each CPU core is worth 5 points, each GB ram is 1 point.
     def calculate_vm_points(self, vm):
         if self.config["method"] == "max":
-            return (vm["maxcpu"] * 5) + ((vm["maxmem"] / 1024 / 1024 / 1024) * 1)
+            return (vm["cpus"] * 5) + ((vm["maxmem"] / 1024 / 1024 / 1024) * 1)
         return (vm["cpu"] * 5) + ((vm["mem"] / 1024 / 1024 / 1024) * 1)
 
     # Generate node_list and vm_list.
